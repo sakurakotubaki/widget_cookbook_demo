@@ -58,7 +58,7 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> _furnitureItems = [
+    final List<Map<String, String>> furnitureItems = [
       {
         'image': 'couch.jpg',
         'title': 'ソファ',
@@ -88,9 +88,9 @@ class HomeContent extends StatelessWidget {
               mainAxisSpacing: 16,
               crossAxisSpacing: 16,
             ),
-            itemCount: _furnitureItems.length,
+            itemCount: furnitureItems.length,
             itemBuilder: (context, index) {
-              final item = _furnitureItems[index];
+              final item = furnitureItems[index];
               return FurnitureCard(
                 title: item['title']!,
                 subtitle: item['subtitle']!,
@@ -432,8 +432,10 @@ class _CartPageState extends State<CartPage> {
     },
   ];
 
-  int get totalQuantity => _cartItems.fold(0, (sum, item) => sum + item['quantity'] as int);
-  int get totalPrice => _cartItems.fold(0, (sum, item) => sum + (item['price'] * item['quantity']) as int);
+  int get totalQuantity =>
+      _cartItems.fold(0, (sum, item) => sum + item['quantity'] as int);
+  int get totalPrice => _cartItems.fold(
+      0, (sum, item) => sum + (item['price'] * item['quantity']) as int);
 
   void _updateQuantity(int index, int delta) {
     setState(() {
